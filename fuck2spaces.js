@@ -1,7 +1,9 @@
 #! /usr/bin/env node
 
-const fs  = require("fs");
-const path = require("path");
+const fs    = require("fs");
+const path  = require("path");
+const chalk = require("chalk");
+const readl = require('readline-sync');
 
 const stringEndNoSemicolon = [
     ";", '{', '}'
@@ -12,12 +14,46 @@ const extensionsSemicolon = [
 const ignoreSemicolon = [
     '`', '"', "'"
 ];
+const ignoreFolders = [
+    "node_modules", ".git"
+];
+const targetDirPath = process.argv[2];
 
-const targetDirPath = path.join(__dirname, process.argv[2]);
+if (!targetDirPath) {
+    console.log(chalk.red("❌  Error! You have to include the path to the directory as an argument."));
+    outro();
+    process.exit();
+}
+
+
+// fancy intro + warning
+
+console.clear();
+intro();
+console.log(chalk.yellow("⚠️  Warning! Only run this tool on a newly initialized Vite project. If you do it twice, you're gonna get ugly 8-space tabs."));
+while (true) {
+    const yn = readl.question("Do you wish to procceed? (y/n) > ").toLowerCase();
+    if (yn == 'y') {
+        break;
+    } else if (yn == 'n') {
+        console.log(chalk.red("👋  Bye!"));
+        outro();
+        process.exit();
+    }
+}
+
+
+// the main part + outro
+
 step(targetDirPath);
-console.log("Done!");
+console.log(chalk.green("✅  Done!"));
+outro();
+
+
+// core functions
 
 function step (p) {
+    if (ignoreFolders.filter(f => p.endsWith(f)).length || (p.includes(".") && p != '.')) return;
     const targetDir = fs.readdirSync(p);
 
     targetDir.forEach(item => {
@@ -62,4 +98,12 @@ function editFile (p) {
     });
 
     fs.writeFileSync(p, lines.join('\n'));
+}
+
+function outro () {
+    console.log(chalk.blueBright("\n\nMade by Ucrash! ") + chalk.blueBright.bold.underline("https://github.com/gducrash"));
+}
+
+function intro () {
+    console.log(chalk.blueBright.bold("\n\n[fuck2spaces v 1.1.0]\n\n"));
 }

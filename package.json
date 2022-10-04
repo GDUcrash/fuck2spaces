@@ -1,10 +1,30 @@
 {
     "name": "fuck2spaces",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "Changes 2 space to 4 space indentation and adds semicolons at the end, designed specifically for Vite",
     "bin": {
         "multiply": "fuck2spaces.js"
     },
     "author": "Ucrash",
-    "license": "MIT"
+    "license": "MIT",
+    "dependencies": {
+        "chalk": "^4.1.2",
+        "readline-sync": "^1.4.10"
+    },
+    "main": "fuck2spaces.js",
+    "devDependencies": {},
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/GDUcrash/fuck2spaces.git"
+    },
+    "keywords": [
+        "Vite",
+        "4tabs",
+        "tabs",
+        "tool"
+    ],
+    "bugs": {
+        "url": "https://github.com/GDUcrash/fuck2spaces/issues"
+    },
+    "homepage": "https://github.com/GDUcrash/fuck2spaces#readme"
 }

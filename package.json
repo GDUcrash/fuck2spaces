@@ -1,0 +1,10 @@
+{
+    "name": "fuck2spaces",
+    "version": "1.0.0",
+    "description": "Changes 2 space to 4 space indentation and adds semicolons at the end, designed specifically for Vite",
+    "bin": {
+        "multiply": "fuck2spaces.js"
+    },
+    "author": "Ucrash",
+    "license": "MIT"
+}

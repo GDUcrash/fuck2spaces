@@ -1,2 +1,5 @@
-# fuck2spaces
-A tool designed specifically to be run after `npm init vite@latest`
+# How to use:
+```cmd
+npm init vite@latest
+npx fuck2spaces .
+```

@@ -1,5 +1,5 @@
 # How to use:
-```cmd
+```bash
 npm init vite@latest
 npx fuck2spaces .
 ```
